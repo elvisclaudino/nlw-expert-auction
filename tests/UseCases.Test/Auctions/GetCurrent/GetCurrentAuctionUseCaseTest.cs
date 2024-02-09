@@ -32,7 +32,7 @@ public class GetCurrentAuctionUseCaseTest
                     Condition = f.PickRandom<Condition>(),
                     AuctionId = auction.Id
                 }
-            });
+            }).Generate();
 
         var mock = new Mock<IAuctionRepository>();
         mock.Setup(i => i.GetCurrent()).Returns(entity);
@@ -44,5 +44,7 @@ public class GetCurrentAuctionUseCaseTest
 
         // ASSERT - Verifico se o resultado devolvido é o resultado esperado
         auction.Should().NotBeNull();
+        auction.Id.Should().Be(entity.Id);
+        auction.Name.Should().Be(entity.Name);
     }
 }

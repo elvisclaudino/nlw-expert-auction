@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using RocketseatAuction.API.Contracts;
-using RocketseatAuction.API.Controllers;
 using RocketseatAuction.API.Filters;
 using RocketseatAuction.API.Repositories;
 using RocketseatAuction.API.Repositories.DataAccess;
@@ -45,7 +44,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddScoped<AuthenticationUserAttribute>();
-builder.Services.AddScoped<LoggedUser>();
+builder.Services.AddScoped<ILoggedUser, LoggedUser>();
 builder.Services.AddScoped<CreateOfferUseCase>();
 builder.Services.AddScoped<GetCurrentAuctionUseCase>();
 builder.Services.AddScoped<CreateOfferUseCase>();
